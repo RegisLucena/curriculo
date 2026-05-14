@@ -8,7 +8,6 @@ body {
     min-height: 100vh;
 }
 
-/* Container ocupa a tela */
 .container {
     padding: 0px 50px;
     flex: 1;
@@ -20,7 +19,6 @@ main {
     flex: 1;
 }
 
-/* Foto de perfil */
 .center img {
     width: 150px;
     height: 150px;
@@ -28,7 +26,6 @@ main {
     border: 5px solid #191970;
 }
 
-/* Centralizar */
 .center {
     text-align: center;
 }
@@ -37,21 +34,18 @@ h1 {
     color: #191970;
 }
 
-/* Footer */
 footer {
     display: flex;
     justify-content: center;
     padding: 20px 0;
 }
 
-/* Links do footer */
 .links {
     display: flex;
     gap: 30px;
     align-items: center;
 }
 
-/* Ícones do footer */
 .links img {
     width: 28px;
     height: 28px;

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>estudano e sendo gay</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            background: radial-gradient(circle, #2c0211 0%, #000000 100%);
+            color: #fff;
+            font-family: 'Georgia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #lyric-container {
+            text-align: center;
+            width: 90%;
+            z-index: 10;
+            position: relative;
+            height: 200px;
+        }
+
+        .lyric-line {
+            font-size: 2.8rem;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            width: 100%;
+            text-shadow: 0 0 15px rgba(214, 51, 132, 0.9);
+            pointer-events: none;
+            font-weight: bold;
+        }
+
+        .particle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        #controls {
+            position: fixed;
+            bottom: 30px;
+            z-index: 100;
+        }
+
+        button {
+            padding: 15px 30px;
+            cursor: pointer;
+            background: #d63384;
+            border: none;
+            color: white;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            box-shadow: 0 0 15px rgba(214, 51, 132, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="controls">
+        <button onclick="startExperience()">Eu to muito gay pqp" ❤️</button>
+    </div>
+
+    <div id="lyric-container"></div>
+
+    <audio id="musica" src="alianca-tribalistas-lyric-video-marisamonte-youtube_ILKoOQgV.mp3"></audio>
+
+    <script>
+        // Tempos corrigidos para sequência lógica (Crescente)
+        const lyrics = [
+            { text: "Se um dia, eu te encontrar", start: 0.5, duration: 7 },
+            { text: "Do jeito que sonhei", start: 8, duration: 5 },
+            { text: "Quem sabe ser seu par perfeito", start: 14, duration: 6.5 },
+            { text: "E te amar do jeito que eu imaginei", start: 21, duration: 7 },
+            { text: "♪♬♫♩♬♪", start: 29, duration: 3.5 },
+            { text: "Ao virar a esquina", start: 33, duration: 2 },
+            { text: "Atras de uma cortina me perder", start: 36, duration: 3 },
+            { text: "No escuro com ", start: 40, duration: 1 },
+            { text: "✨VOCÊ✨", start: 42, duration: 2 }
+        ];
+
+        function createParticle() {
+            const particle = document.createElement('div');
+
+// 1. Criamos a lista com todos os seus símbolos
+        const simbolos = ['⭐', '❤️', '𝄞', '♪'];
+
+// 2. Sorteamos um símbolo da lista usando o tamanho dela (length)
+        particle.innerHTML = simbolos[Math.floor(Math.random() * simbolos.length)];
+
+        particle.className = 'particle';
+        particle.style.left = Math.random() * window.innerWidth + 'px';
+        particle.style.top = window.innerHeight + 'px';
+        particle.style.fontSize = (Math.random() * 20 + 15) + 'px';
+        document.body.appendChild(particle);
+
+            gsap.to(particle, {
+                y: -(window.innerHeight + 100),
+                x: (Math.random() - 0.5) * 200,
+                opacity: 0.7,
+                rotation: 360,
+                duration: Math.random() * 4 + 3,
+                onComplete: () => particle.remove()
+            });
+        }
+
+        function startExperience() {
+            const audio = document.getElementById('musica');
+            const container = document.getElementById('lyric-container');
+            document.getElementById('controls').style.display = 'none';
+            
+            audio.play();
+            setInterval(createParticle, 250);
+
+            lyrics.forEach((line) => {
+                const div = document.createElement('div');
+                div.className = 'lyric-line';
+                div.innerText = line.text;
+                container.appendChild(div);
+
+                const tl = gsap.timeline({ delay: line.start });
+                
+                tl.to(div, { 
+                    opacity: 1, 
+                    scale: 1, 
+                    duration: 0.5, 
+                    ease: "power2.out" 
+                })
+                .to(div, { 
+                    opacity: 0, 
+                    y: -30, 
+                    duration: 0.5, 
+                    delay: line.duration 
+                });
+            });
+        }
+    </script>
+</body>
+</html>

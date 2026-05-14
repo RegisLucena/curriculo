@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>pergunta importante confia</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #ffe0f0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+      font-size: 2.5em;
+      color: #c2185b;
+    }
+
+    #botoes {
+      position: relative;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    #sim {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    #nao {
+      background-color: #f44336;
+      color: white;
+      position: absolute;
+    }
+
+    #mensagem {
+      margin-top: 30px;
+      font-size: 22px;
+      color: #880e4f;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>vc é baitola que não toma banho</h1>
+
+  <div id="botoes">
+    <button id="sim">Sim</button>
+    <button id="nao">Não</button>
+  </div>
+
+  <div id="mensagem"></div>
+
+  <script>
+    const btnSim = document.getElementById("sim");
+    const btnNao = document.getElementById("nao");
+    const mensagem = document.getElementById("mensagem");
+    const botoesDiv = document.getElementById("botoes");
+
+    btnSim.addEventListener("click", () => {
+      mensagem.textContent = "Faz 67 dias que vc não toma um banho sebosa, -1000 aura";
+    });
+
+    btnNao.addEventListener("mouseenter", () => {
+      const larguraJanela = window.innerWidth;
+      const alturaJanela = window.innerHeight;
+
+      const novoX = Math.floor(Math.random() * (larguraJanela - 100));
+      const novoY = Math.floor(Math.random() * (alturaJanela - 100));
+
+      btnNao.style.left = `${novoX}px`;
+      btnNao.style.top = `${novoY}px`;
+    });
+  </script>
+
+</body>
+</html>
